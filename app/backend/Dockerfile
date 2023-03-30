@@ -1,3 +1,5 @@
+# Iniciando projeto
+
 # Usar a imagem node:16.14-alpine como base
 
 # Mudar para o diretório de trabalho /app-backend
