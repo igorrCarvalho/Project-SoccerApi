@@ -11,6 +11,6 @@ const controller = new LoginController(service);
 
 loginRouter.get('/');
 
-loginRouter.post('/login', verifyLoginMiddleware, controller.tryLogin);
+loginRouter.post('/', verifyLoginMiddleware, controller.tryLogin);
 
 export default loginRouter;
