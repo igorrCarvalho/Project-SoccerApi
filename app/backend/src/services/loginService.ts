@@ -29,6 +29,14 @@ class LoginService {
     const token = createToken(user);
     return { token };
   }
+
+  public async supplyRole(email: string): Promise<string | undefined> {
+    const [user] = await this.userModel.findAll({ where: { email } });
+
+    if (!user) return undefined;
+
+    return user.role;
+  }
 }
 
 export default LoginService;

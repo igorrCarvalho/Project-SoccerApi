@@ -16,6 +16,12 @@ class LoginController {
     const { token } = user;
     return res.status(200).json({ token });
   };
+
+  public showRole = async (req: Request, res: Response) => {
+    const user = req.body.data;
+    const { data: { role } } = user;
+    res.status(200).json({ role });
+  };
 }
 
 export default LoginController;
