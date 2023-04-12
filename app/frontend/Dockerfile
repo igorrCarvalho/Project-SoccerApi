@@ -6,10 +6,10 @@ FROM node:16.14-alpine
 WORKDIR /app-frontend
 # Copiar os package.json e package-lock.json para o container
 
-COPY . .
-# Instalar as dependências Node
-
 RUN npm install
+# Instalar as dependências Node
+COPY . .
+
 # Copiar o restante dos arquivos da aplicação para o container
 
 # Sinalize que aplicação expõe a porta 3001

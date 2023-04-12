@@ -10,8 +10,13 @@ class TeamService {
   }
 
   public async supplyAll(): Promise<ITeam[]> {
-    const result = await this.teamModel.findAll();
-    return result;
+    const teams = await this.teamModel.findAll();
+    return teams;
+  }
+
+  public async supplyById(id: string): Promise<ITeam | null> {
+    const team = await this.teamModel.findByPk(id);
+    return team;
   }
 }
 
