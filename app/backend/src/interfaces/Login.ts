@@ -9,7 +9,7 @@ export interface IToken {
 
 export interface ISuccess {
   type: boolean;
-  message: string; 
+  message: string;
 }
 
 export interface IError {
