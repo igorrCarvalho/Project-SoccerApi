@@ -3,7 +3,7 @@ import Matches from '../database/models/Match';
 import Teams from '../database/models/team';
 
 class MatchService {
-  private matchModel: ModelStatic<Matches>
+  private matchModel: ModelStatic<Matches>;
 
   constructor(model: ModelStatic<Matches>) {
     this.matchModel = model;
