@@ -13,6 +13,14 @@ class MatchController {
     const matches = await this.matchService.supplyAllMatches(inProgress as string | null);
     return res.status(200).json(matches);
   };
+
+  public finishCurrentMatch = async (req: Request, res: Response) => {
+    const { id } = req.params;
+
+    await this.matchService.tryToFinish(Number(id));
+
+    return res.status(200).json({ message: 'Finished' });
+  };
 }
 
 export default MatchController;

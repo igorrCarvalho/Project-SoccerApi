@@ -24,6 +24,10 @@ class MatchService {
 
     return matches;
   }
+
+  public async tryToFinish(id: number): Promise<void> {
+    await this.matchModel.update({ inProgress: false }, { where: { id } });
+  }
 }
 
 export default MatchService;
