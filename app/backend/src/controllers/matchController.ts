@@ -24,9 +24,9 @@ class MatchController {
 
   public updateMatch = async (req: Request, res: Response) => {
     const { id } = req.params;
-    const { homeTeamGols, awayTeamGols } = req.body;
-    await this.matchService.supplyUpdate(Number(id), homeTeamGols, awayTeamGols);
-    res.status(200).json();
+    const { homeTeamGoals, awayTeamGoals } = req.body;
+    await this.matchService.supplyUpdate(Number(id), homeTeamGoals, awayTeamGoals);
+    res.status(200).json({ message: 'ok' });
   };
 
   public generateMatch = async (req: Request, res: Response) => {
