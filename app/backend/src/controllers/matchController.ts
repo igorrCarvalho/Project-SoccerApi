@@ -9,7 +9,8 @@ class MatchController {
   }
 
   public showAllMatches = async (req: Request, res: Response) => {
-    const matches = await this.matchService.supplyAllMatches();
+    const { inProgress } = req.query;
+    const matches = await this.matchService.supplyAllMatches(inProgress as string | null);
     return res.status(200).json(matches);
   };
 }
