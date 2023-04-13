@@ -28,6 +28,25 @@ class MatchController {
     await this.matchService.supplyUpdate(Number(id), homeTeamGols, awayTeamGols);
     res.status(200).json();
   };
+
+  public generateMatch = async (req: Request, res: Response) => {
+    const { homeTeamId, awayTeamId, homeTeamGoals, awayTeamGoals } = req.body;
+    if (homeTeamId === awayTeamId) {
+      return res.status(422)
+        .json({ message: 'It is not possible to create a match with two equal teams' });
+    }
+    if (
+      !(await this.matchService.findById(Number(homeTeamId)))
+      || !(await this.matchService.findById(awayTeamId))
+    ) {
+      return res.status(404).json({ message: 'There is no team with such id!' });
+    }
+    await this.matchService.createMatch(homeTeamId, awayTeamId, homeTeamGoals, awayTeamGoals);
+    const newMatch = {
+      homeTeamId, awayTeamId, homeTeamGoals, awayTeamGoals, inProgress: true,
+    };
+    res.status(201).json(newMatch);
+  };
 }
 
 export default MatchController;
