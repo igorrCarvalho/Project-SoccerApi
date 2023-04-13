@@ -1,6 +1,7 @@
 import { ModelStatic } from 'sequelize';
 import Matches from '../database/models/Match';
 import Teams from '../database/models/team';
+import IMatch from '../interfaces/IMatch';
 
 class MatchService {
   private matchModel: ModelStatic<Matches>;
@@ -43,14 +44,16 @@ class MatchService {
     awayTeamId: number,
     homeTeamGoals: number,
     awayTeamGoals: number,
-  ): Promise<void> {
-    await this.matchModel.create({
+  ): Promise<IMatch> {
+    const newMatch = await this.matchModel.create({
       homeTeamId,
       awayTeamId,
       homeTeamGoals,
       awayTeamGoals,
       inProgress: true,
     });
+
+    return newMatch;
   }
 }
 

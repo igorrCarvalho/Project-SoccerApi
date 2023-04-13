@@ -41,10 +41,8 @@ class MatchController {
     ) {
       return res.status(404).json({ message: 'There is no team with such id!' });
     }
-    await this.matchService.createMatch(homeTeamId, awayTeamId, homeTeamGoals, awayTeamGoals);
-    const newMatch = {
-      homeTeamId, awayTeamId, homeTeamGoals, awayTeamGoals, inProgress: true,
-    };
+    const newMatch = await this.matchService
+      .createMatch(homeTeamId, awayTeamId, homeTeamGoals, awayTeamGoals);
     res.status(201).json(newMatch);
   };
 }
