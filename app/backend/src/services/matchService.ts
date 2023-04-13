@@ -28,6 +28,10 @@ class MatchService {
   public async tryToFinish(id: number): Promise<void> {
     await this.matchModel.update({ inProgress: false }, { where: { id } });
   }
+
+  public async supplyUpdate(id: number, homeTeamGols: number, awayTeamGols: number): Promise<void> {
+    await this.matchModel.update({ homeTeamGols, awayTeamGols }, { where: { id } });
+  }
 }
 
 export default MatchService;

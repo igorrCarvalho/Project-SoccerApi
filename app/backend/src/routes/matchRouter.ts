@@ -13,4 +13,6 @@ matchRouter.get('/', controller.showAllMatches);
 
 matchRouter.patch('/:id/finish', validateToken, controller.finishCurrentMatch);
 
+matchRouter.patch('/:id', validateToken, controller.updateMatch);
+
 export default matchRouter;
